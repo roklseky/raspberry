@@ -45,3 +45,23 @@ curl -fsSL https://pkgs.tailscale.com/stable/raspbian/bullseye.tailscale-keyring
 sudo apt-get update
 sudo apt-get install tailscale
 sudo tailscale up
+
+# Docker installation
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker pi
+
+#Docker-compose https://docs.docker.com/compose/install/
+sudo curl -L \
+    "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" \
+    -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+#uninstall -> sudo rm /usr/local/bin/docker-compose
+
+# Docker API
+#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375
+sleep 20
+sudo sed -i 's*--containerd=/run/containerd/containerd.sock*--containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375*' \
+/lib/systemd/system/docker.service
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
