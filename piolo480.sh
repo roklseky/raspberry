@@ -2,9 +2,9 @@
 
 # Static IP /etc/dhcpcd.conf
 echo "interface eth0" | sudo tee -a touch /etc/dhcpcd.conf
-echo "static ip_address=10.0.0.111/24"
-echo "static routers=10.0.0.1"
-echo "static domain_name_servers=10.0.0.1"
+echo "static ip_address=10.0.0.111/24" | sudo tee -a touch /etc/dhcpcd.conf
+echo "static routers=10.0.0.1" | sudo tee -a touch /etc/dhcpcd.conf
+echo "static domain_name_servers=10.0.0.1" | sudo tee -a touch /etc/dhcpcd.conf
 
 
 # https://tailscale.com/kb/1019/subnets/
