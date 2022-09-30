@@ -30,7 +30,7 @@ sudo tailscale up
 # Docker installation
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
-sudo usermod -aG docker pi
+sudo usermod -aG docker rokl
 
 #Docker-compose https://docs.docker.com/compose/install/
 sudo curl -L \
