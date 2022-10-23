@@ -1,0 +1,2 @@
+sudo docker exec -it homeassistant-raspo480 bash
+wget -O - https://get.hacs.xyz 4 | bash -
